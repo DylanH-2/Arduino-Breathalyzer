@@ -1,0 +1,58 @@
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+//global variables and pin assigments
+int sensorpin = A0;
+int alcvalue = 400;
+int speaker = 13;
+int redled = 6;
+int greenled = 10;
+int blueled = 9;
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(speaker, OUTPUT);
+  pinMode(redled, OUTPUT);
+  pinMode(greenled, OUTPUT);
+  pinMode(blueled, OUTPUT);
+  lcd.begin(16, 2); //initializes display size to show that many columns and rows. Must be called in setup and manage display memory
+  lcd.print("Breathalyzer"); //prints text to screen
+  Serial.begin(9600);
+}
+
+void setColor(int red, int green, int blue) { //function for rgb colors
+  analogWrite(redled, red);
+  analogWrite(greenled, green);
+  analogWrite(blueled, blue);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+int readval = analogRead(sensorpin);
+  Serial.println(readval);
+
+  lcd.setCursor(0, 1);         // First column, second line
+  lcd.print("Value:     ");    // Clear previous value space
+  lcd.setCursor(7, 1);         // Print new value at the right spot
+  lcd.print(readval);
+
+  if (readval > alcvalue) {
+    Serial.println("Detected");
+    setColor(255,0,0); // Red = high
+    tone(speaker, 150, 500);
+    delay(2000);
+  } 
+  else if (readval >= 100) {
+    Serial.println("A little in system");
+    setColor(255,255,0); // Yellow = medium
+    tone(speaker, 500, 500);
+    delay(2000);
+  } 
+  else { // readval < 100
+    Serial.println("None");
+    setColor(255,192,203); // Magenta = low
+    noTone(speaker);
+    delay(2000);
+  }
+
+}
