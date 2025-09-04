@@ -16,5 +16,9 @@ This is project is a DIY Arduino breathalyzer that detects alcohol levels using 
 
 <img width="816" height="632" alt="image" src="https://github.com/user-attachments/assets/5a0ff147-9d99-4382-9198-12ff1ecc91b4" />
 
+
+Note: TinkerCad doesn't have the MQ-3 sensor component
 # Circuit diagram
+
+<img width="897" height="650" alt="image" src="https://github.com/user-attachments/assets/7e6b1e82-dc36-49c9-8c4c-ded94dc0abbc" />
 
