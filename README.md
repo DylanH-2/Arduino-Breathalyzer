@@ -12,3 +12,9 @@ This is project is a DIY Arduino breathalyzer that detects alcohol levels using 
   * The user blows a substance containing alcohol like hand sanitizer into the sensor
   * The sensor detects it and returns the voltage to a relative alcohol level
   * Feedback is provided through the other components 
+# Schematic
+
+<img width="816" height="632" alt="image" src="https://github.com/user-attachments/assets/5a0ff147-9d99-4382-9198-12ff1ecc91b4" />
+
+# Circuit diagram
+
